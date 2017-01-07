@@ -1,0 +1,33 @@
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+<div style="margin-top:-35px; height: 8%; padding: 30px; color:white; padding-top:8%; background:#F44336">
+  <div class="container">
+    <h1>New Company</h1>
+  </div>
+</div>
+
+<div class="container" style="margin-top:30px">
+<%= render 'form', company: @company %>
+
+<!-- Front end validation -->
+<script>
+  var name_field = document.getElementById('company_name');
+
+  name_field.addEventListener('input', function()
+  {
+      var val = name_field.value;
+      if(val.length > 3) {
+        document.getElementById('submit_btn').disabled = false;
+      } else {
+        document.getElementById('submit_btn').disabled = true;
+      }
+  });
+</script>
+
+<%= link_to 'Back', companies_path, :class => "btn", :style => "color:white" %>
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

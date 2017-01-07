@@ -1,0 +1,49 @@
+<div>
+  <%= form_for(user) do |f| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="browser-default input-field col s12">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="browser-default input-field col s12">
+        <%= f.label :email %>
+        <%= f.text_field :email, :type => "email", :class => "validate" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="browser-default col s12">
+        <%= f.label :company_name %>
+        <%= f.select :company_id, options_for_select(@companies.map{ |c|
+          [c.name, c.id] }) %>
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="actions">
+      <%= f.submit(:disabled => true, :id => "submit_btn", :class => "btn", :style => "color:white") %>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+    </script>
+  <% end %>
+</div>
